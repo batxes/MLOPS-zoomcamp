@@ -1,0 +1,5 @@
+vim requirements.txt
+conda create -n exp-tracking-env python
+conda activate exp-tracking-env
+pip install -r requirements.txt 
+mlflow ui --backend-store-uri sqlite:///mlflow.db
