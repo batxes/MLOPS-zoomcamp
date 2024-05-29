@@ -1,0 +1,15 @@
+artifact_uri: file:///workspaces/mlops-zoomcamp/02-experiment-tracking/homework/mlruns/0/e2a823d2faa54a9d8712265b9cb677e1/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: e2a823d2faa54a9d8712265b9cb677e1
+run_name: angry-pug-548
+run_uuid: e2a823d2faa54a9d8712265b9cb677e1
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716990601107
+status: 1
+tags: []
+user_id: codespace
