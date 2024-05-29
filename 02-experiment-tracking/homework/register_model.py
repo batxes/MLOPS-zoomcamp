@@ -8,11 +8,13 @@ from mlflow.tracking import MlflowClient
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_squared_error
 
-HPO_EXPERIMENT_NAME = "random-forest-hyperopt"
-EXPERIMENT_NAME = "random-forest-best-models"
+HPO_EXPERIMENT_NAME = "random-forest-hyperopt_"
+EXPERIMENT_NAME = "random-forest-best-models_"
 RF_PARAMS = ['max_depth', 'n_estimators', 'min_samples_split', 'min_samples_leaf', 'random_state']
 
 mlflow.set_tracking_uri("http://127.0.0.1:5000")
+#current_experiment=dict(mlflow.get_experiment_by_name(EXPERIMENT_NAME))
+#experiment_id=current_experiment['experiment_id']
 mlflow.set_experiment(EXPERIMENT_NAME)
 mlflow.sklearn.autolog()
 
@@ -71,10 +73,21 @@ def run_register_model(data_path: str, top_n: int):
 
     # Select the model with the lowest test RMSE
     experiment = client.get_experiment_by_name(EXPERIMENT_NAME)
+
+    # My code
+    for run in runs:
+        print(f"run id: {run.info.run_id}, rmse: {run.data.metrics['rmse']:.4f}")
+
+    best_run = client.search_runs(
+        experiment_ids=experiment.experiment_id,
+    )[0]
+    print(f"best run id: {best_run.info.run_id}, rmse: {best_run.data.metrics['rmse']:.4f}")
     # best_run = client.search_runs( ...  )[0]
 
     # Register the best model
     # mlflow.register_model( ... )
+    model_uri = f"runs:/{best_run.info.run_id}/model"
+    mlflow.register_model(model_uri=model_uri, name=EXPERIMENT_NAME)
 
 
 if __name__ == '__main__':
