@@ -87,3 +87,24 @@ docker build -t ride-duration-prediction-service:v1 .
 ```bash
 docker run -it --rm -p 9696:9696  ride-duration-prediction-service:v1
 ```
+
+
+## Starting with web service mlflow
+
+install mlflow in the environment with
+
+```bash
+pipenv install mlflow
+```
+
+run the remote server in AWS from Alexey (data talksclub)
+
+```bash
+mlflow server \
+    --backend-store-uri=sqlite:///mlflow.db \
+    --default-artifact-root=s3://mlflow-models-alexey/
+```
+
+I got: ModuleNotFoundError: No module named 'boto3'
+
+install boto3 also with pipenv
