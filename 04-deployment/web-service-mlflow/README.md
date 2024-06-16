@@ -17,23 +17,17 @@ and run:
 pipenv shell
 mlflow server --backend-store-uri=sqlite:///mlflow.db  --default-artifact- root=s3://mlflow-models-ibai/
 ```
-next, run the notebook:
+next, run the notebook (not in codespaces!! important):
 
-to delete an experiment permanently: rm -rf mlruns/.trash/*
-
-Downloading the artifact
+My run ID: 06e935a7b17943c4b9e95e9d012489d7
 
 ```bash
 export MLFLOW_TRACKING_URI="http://127.0.0.1:5000"
-export MODEL_RUN_ID="6dd459b11b4e48dc862f4e1019d166f6"
-
-mlflow artifacts download \
-    --run-id ${MODEL_RUN_ID} \
-    --artifact-path model \
-    --dst-path .
+export MODEL_RUN_ID="06e935a7b17943c4b9e95e9d012489d7"
 ```
 
+Now we modify predict.py so that we download the model from the S3 bucket.
+we run predict.py also outside codespaces.
+and now we have already our server running.
 
-
-### My Notes
-
+we can test with test_with_flask.py

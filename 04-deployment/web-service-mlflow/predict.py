@@ -7,19 +7,21 @@ from mlflow.tracking import MlflowClient
 
 from flask import Flask, request, jsonify
 
-RUN_ID = 'b4d3bca8aa8e46a6b8257fe4541b1136'
+RUN_ID = '06e935a7b17943c4b9e95e9d012489d7'
 MLFLOW_TRACKING_URI = 'http://127.0.0.1:5000'
 
 mlflow.set_tracking_uri(MLFLOW_TRACKING_URI)
 client = MlflowClient(tracking_uri=MLFLOW_TRACKING_URI)
-path = client.download_artifacts(run_id=RUN_ID, path='dict_vectorizer.bin')
+#path = client.download_artifacts(run_id=RUN_ID, path='dict_vectorizer.bin')
 
-print (f"downloading the dict vectorizer to {path}")
+#print (f"downloading the dict vectorizer to {path}")
 
-with open(path, 'rb') as f_out:
-    dv = pickle.load(f_out)
+#with open(path, 'rb') as f_out:
+#    dv = pickle.load(f_out)
 
-logged_model = f'runs:/{RUN_ID}/model'
+#logged_model = f'runs:/{RUN_ID}/model'
+logged_model = f's3://mlflow-models-ibai/2/{RUN_ID}/artifacts/model'
+
 
 # Load model as a PyFuncModel.
 model = mlflow.pyfunc.load_model(logged_model)
@@ -32,8 +34,8 @@ def prepare_features(ride):
     return features
 
 def predict(features):
-    X = dv.transform(features)
-    preds = model.predict(X)
+    #X = dv.transform(features)
+    preds = model.predict(features)
     return float(preds[0])
 
 # create a flask application
