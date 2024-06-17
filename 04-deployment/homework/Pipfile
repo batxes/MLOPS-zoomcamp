@@ -5,6 +5,10 @@ name = "pypi"
 
 [packages]
 scikit-learn = "==0.23.2"
+pandas = "*"
+fastparquet = "*"
+numpy = "==1.19"
+pyarrow = "*"
 
 [dev-packages]
 
