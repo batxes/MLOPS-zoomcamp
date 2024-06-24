@@ -1,0 +1,12 @@
+prefect
+tqdm
+requests
+pyarrow
+psycopg
+psycopg_binary
+evidently
+pandas
+numpy==1.23.4
+scikit-learn
+jupyter
+matplotlib
