@@ -81,3 +81,32 @@ we will create a bash script which first builds the docker image, then runs it a
 We will also crete a docker-compose.yaml to specify different images, path to volumnes, variables and other info.
 
 
+
+   session 6.3
+
+So far we covered unit test and integration tests. Unit tests are tests that use the test functions, with pytest.
+Integration test we run the service inside docker and then we have pytho n script that we execute to see that what the model returns is ok.
+
+We did not test though the part of the kinesis callback. For this we will use localstack (from github).
+Localstack is a fully functional local AWS cloud stack.
+
+We wil use localstack with docker-compose.
+we add the code to the docker-compose.yaml and then execute with docker-compose up kinesis.
+
+then, in a terminal:
+aws --endpoint-url=http://localhost/4566 kinesis list-streams
+
+there are no streams. We will create one:
+aws --endpoint-url=http://localhost/4566 kinesis create-stream --stream-name ride_predictions --shard-count 1 
+
+this will create the stream in localhost, not in AWS account.
+
+we need to configure the code to access localstack. We will modify docker-compose.yaml for that. Modify also model.py with a function to create the client and run.sh
+
+ session 6.4: good code quality: linting and formatting for good 
+
+
+
+
+
+
