@@ -16,12 +16,12 @@ The course consists of weekly modules and homework. The final weeks, one needs t
 ## Tools/tech used:
 
 <p align="center">
-    <img src="icons/MLFlow.png" width="50">
-    <img src="icons/Docker.png" width="50">
+    <img src="icons/MLFlow.png" width="100">
+    <img src="icons/Docker.png" width="100">
     <img src="icons/mage.jpg" width="50">
-    <img src="icons/flask.png" width="50">
-    <img src="icons/aws.png" width="50">
-    <img src="icons/grafana.png" width="50">
+    <img src="icons/flask.png" width="40">
+    <img src="icons/aws.png" width="60">
+    <img src="icons/grafana.png" width="100">
 </p>
 
 
